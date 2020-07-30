@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Lopatin_Faq::faqs" title="My Faq" module="Lopatin_Faq" sortOrder="51" resource="Lopatin_Faq::faq"/>
+        <add id="Lopatin_Faq::faq" title="Manage Faqs" module="Lopatin_Faq" sortOrder="10"
+             action="lopatin_faq/faq/index" resource="Lopatin_Faq::faqs"
+             parent="Lopatin_Faq::faqs"/>
+        <add id="Lopatin_Faq::faq_configuration" title="Configuration" module="Lopatin_Faq"
+             sortOrder="99" parent="Lopatin_Faq::faqs"
+             action="adminhtml/system_config/edit/section/faq"
+             resource="Lopatin_Faq::faq_configuration"/>
+    </menu>
+</config>
