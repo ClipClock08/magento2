@@ -2,9 +2,8 @@
 
 namespace Lopatin\Faq\Block\Adminhtml;
 
-use Magento\Backend\Block\Widget\Container;
 
-class Faq extends Container
+class Faq extends \Magento\Backend\Block\Widget\Grid\Container
 {
     protected function _construct()
     {

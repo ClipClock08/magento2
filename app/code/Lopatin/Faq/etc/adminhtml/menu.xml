@@ -4,7 +4,7 @@
     <menu>
         <add id="Lopatin_Faq::faqs" title="My Faq" module="Lopatin_Faq" sortOrder="51" resource="Lopatin_Faq::faq"/>
         <add id="Lopatin_Faq::faq" title="Manage Faqs" module="Lopatin_Faq" sortOrder="10"
-             action="lopatin_faq/faq/index" resource="Lopatin_Faq::faqs"
+             action="lopatin_faq/faq/test" resource="Lopatin_Faq::faqs"
              parent="Lopatin_Faq::faqs"/>
         <add id="Lopatin_Faq::faq_configuration" title="Configuration" module="Lopatin_Faq"
              sortOrder="99" parent="Lopatin_Faq::faqs"

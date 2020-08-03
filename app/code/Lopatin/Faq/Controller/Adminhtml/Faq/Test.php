@@ -4,9 +4,8 @@ namespace Lopatin\Faq\Controller\Adminhtml\Faq;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\View\Result\PageFactory;
-use Lopatin\Faq\Model\FaqFactory;
 
-class Index extends Action
+class Test extends Action
 {
     protected $resultPageFactory = false;
 
@@ -20,7 +19,7 @@ class Index extends Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend('Controller title set');
+        $resultPage->getConfig()->getTitle()->prepend('Админ грид');
         return $resultPage;
     }
 }

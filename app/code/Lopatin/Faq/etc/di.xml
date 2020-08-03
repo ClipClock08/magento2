@@ -4,7 +4,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="lopatin_faq_post_listing_data_source" xsi:type="string">
+                <item name="faq_listing_data_source" xsi:type="string">
                     Lopatin\Faq\Model\ResourceModel\Faq\Collection
                 </item>
             </argument>
