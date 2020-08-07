@@ -149,5 +149,11 @@
                 </item>
             </argument>
         </column>
+        <actionsColumn name="actions" class="Lopatin\Faq\Ui\Listing\Columns\Actions"
+                       sortOrder="200">
+            <settings>
+                <indexField>post_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
