@@ -8,31 +8,28 @@ use Magento\Framework\Exception\NotFoundException;
 abstract class Faq extends AbstractAction
 {
     protected $_faqFactory;
+    protected $_coreRegistry;
 
     public function __construct(
         \Lopatin\Faq\Model\FaqFactory $faqFactory,
+        \Magento\Framework\Registry $coreRegistry,
         \Magento\Backend\App\Action\Context $context
     )
     {
         $this->_faqFactory = $faqFactory;
+        $this->_coreRegistry = $coreRegistry;
         parent::__construct($context);
     }
 
-    public function getEntity()
+    protected function _initPost()
     {
-        $this->_faqFactory = $this->_objectManager->get(\Lopatin\Faq\Model\FaqFactory::class);
-        /**
-         * @var \Lopatin\Faq\Model\Faq $entity
-         */
-        $entity = $this->_faqFactory->create();
-        $id = $this->getRequest()->getParam('id');
-        if ($id) {
-            $entity->load($id);
-            if (!$entity->getId()) {
-                $this->messageManager->addError(__('This faq no longer exists.'));
-                throw new NotFoundException(__('Not found'));
-            }
+        $postId = (int)$this->getRequest()->getParam('id');
+        /** @var \Lopatin\Faq\Model\Faq $post */
+        $post = $this->_faqFactory->create();
+        if ($postId) {
+            $post->load($postId);
         }
-        return $entity;
+        $this->_coreRegistry->register('lopatin_faq_post', $post);
+        return $post;
     }
 }

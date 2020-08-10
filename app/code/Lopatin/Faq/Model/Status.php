@@ -6,30 +6,33 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 class Status implements OptionSourceInterface
 {
-    public function getOptionArray()
-    {
-        $options = ['1' => __('Enabled'), '0' => __('In progress'), '2' => __('Canceled')];
-        return $options;
-    }
+    const IN_PROGRESS = 0;
+    const APPROVED = 1;
+    const CANCELED = 1;
 
-    public function getAllOptions()
-    {
-        $res = $this->getOptions();
-        array_unshift($res, ['value' => '', 'label' => '']);
-        return $res;
-    }
 
-    public function getOptions()
-    {
-        $res = [];
-        foreach ($this->getOptionArray() as $index => $value) {
-            $res['value'] = $index;
-            $res['label'] = $value;
-        }
-        return $res;
-    }
+    /**
+     * to option array
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
-        return $this->getOptions();
+        $options = [
+            [
+                'value' => self::IN_PROGRESS,
+                'label' => __('In progress')
+            ],
+            [
+                'value' => self::APPROVED,
+                'label' => __('Approved')
+            ],
+            [
+                'value' => self::CANCELED,
+                'label' => __('Canceled')
+            ],
+        ];
+        return $options;
+
     }
 }
