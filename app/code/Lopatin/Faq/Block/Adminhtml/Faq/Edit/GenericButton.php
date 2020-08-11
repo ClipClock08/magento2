@@ -40,8 +40,8 @@ class GenericButton
      */
     public function getId()
     {
-        $contact = $this->registry->registry('faq');
-        return $contact ? $contact->getId() : null;
+        $faq = $this->registry->registry('faq');
+        return $faq ? $faq->getId() : null;
     }
 
     /**

@@ -21,6 +21,11 @@ class Display extends Template
         return $faq->getCollection();
     }
 
+    public function getFormAction()
+    {
+        return $this->getUrl('myfaq/index/submit', ['_secure' => true]);
+    }
+
     public static function whoAreYou()
     {
         $value = mt_rand(0, 1);

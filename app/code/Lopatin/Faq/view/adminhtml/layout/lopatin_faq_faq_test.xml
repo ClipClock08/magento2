@@ -1,12 +1,8 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <title>Admin Grid</title>
-    </head>
-    <body>
-        <referenceContainer name="content">
-            <uiComponent name="faq_listing"></uiComponent>
-        </referenceContainer>
-    </body>
+    <referenceBlock name="content">
+        <block template="content.phtml" class="Lopatin\Faq\Block\Adminhtml\Main" name="lopatin_faq_block_main"/>
+        <uiComponent name="faq_listing"/>
+    </referenceBlock>
 </page>

@@ -6,13 +6,20 @@ use Magento\Backend\App\Action;
 
 class Add extends Action
 {
-    public function execute()
+    const ADMIN_RESOURCE = 'Faq';
+
+    protected $resultPageFactory;
+
+    public function __construct(
+        \Magento\Backend\App\Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory)
     {
-        $this->_forward('edit');
+        $this->resultPageFactory = $resultPageFactory;
+        parent::__construct($context);
     }
 
-    protected function _isAllowed()
+    public function execute()
     {
-        return $this->_authorization->isAllowed('Lopatin_faq::add');
+        return $this->resultPageFactory->create();
     }
 }
