@@ -142,13 +142,12 @@
             </argument>
         </column>
         <column name="status" component="Magento_Ui/js/grid/columns/select">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">textRange</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">status</item>
-                </item>
-            </argument>
+            <settings>
+                <filter>select</filter>
+                <options class="Lopatin\Faq\Model\Status"/>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
         </column>
         <actionsColumn name="actions" class="Lopatin\Faq\Ui\Component\Listing\Column\FaqActions">
             <argument name="data" xsi:type="array">

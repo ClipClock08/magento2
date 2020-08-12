@@ -15,10 +15,42 @@ class Display extends Template
         parent::__construct($context);
     }
 
+    protected function _prepareLayout()
+    {
+        parent::_prepareLayout();
+        $this->pageConfig->getTitle()->set(__('FAQs'));
+
+
+        if ($this->getFaqCollection()) {
+            $pager = $this->getLayout()->createBlock(
+                'Magento\Theme\Block\Html\Pager',
+                'test.news.pager'
+            )->setAvailableLimit(array(5=>5,10=>10,15=>15))->setShowPerPage(true)->setCollection(
+                $this->getFaqCollection()
+            );
+            $this->setChild('pager', $pager);
+            $this->getFaqCollection()->load();
+        }
+        return $this;
+    }
+
+    public function getPagerHtml()
+    {
+        return $this->getChildHtml('pager');
+    }
     function getFaqCollection()
     {
+        //get values of current page
+        $page = ($this->getRequest()->getParam('p')) ? $this->getRequest()->getParam('p') : 1;
+        //get values of current limit
+        $pageSize = ($this->getRequest()->getParam('limit')) ? $this->getRequest()->getParam('limit') : 5;
+
         $faq = $this->_faqFactory->create();
-        return $faq->getCollection();
+        $faq = $faq->getCollection()->addFieldToFilter('status', 1)
+            ->setOrder('name', 'ASC')
+            ->setPageSize($pageSize)
+            ->setCurPage($page);
+        return $faq;
     }
 
     public function getFormAction()

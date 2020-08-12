@@ -40,10 +40,10 @@ class Delete extends Action
         } catch (\Exception $e) {
             $this->messageManager->addError(__('Error while trying to delete faq'));
             $resultRedirect = $this->resultRedirectFactory->create();
-            return $resultRedirect->setPath('*/*/faq', array('_current' => true));
+            return $resultRedirect->setPath('*/faq/test', array('_current' => true));
         }
 
         $resultRedirect = $this->resultRedirectFactory->create();
-        return $resultRedirect->setPath('*/*/faq', array('_current' => true));
+        return $resultRedirect->setPath('*/faq/test', array('_current' => true));
     }
 }

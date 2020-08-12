@@ -8,7 +8,7 @@ class Status implements OptionSourceInterface
 {
     const IN_PROGRESS = 0;
     const APPROVED = 1;
-    const CANCELED = 1;
+    const CANCELED = 2;
 
 
     /**

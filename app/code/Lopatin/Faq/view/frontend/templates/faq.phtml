@@ -10,6 +10,7 @@
         border-collapse: collapse;
         width: 100%;
         margin-top: 30px;
+        margin-bottom: 30px;
     }
 
     td, th {
@@ -22,67 +23,65 @@
         background-color: #dddddd;
     }
 
-    .post-id {
-        width: 2%
-    }
-
     .post-name {
         width: 30%
     }
 
 </style>
-
-<table>
-    <tr>
-        <th class="post-id">Id</th>
-        <th class="post-name">Name</th>
-        <th>Question</th>
-        <th>Answer</th>
-        <th>Date</th>
-        <th>Status</th>
-    </tr>
-    <?php
-    foreach ($block->getFaqCollection() as $key => $post) {
-        echo '<tr>
-                    <td>' . $post->getPostId() . '</td>
+<div>
+    <table>
+        <tr>
+            <th class="post-name">Name</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Date</th>
+        </tr>
+        <?php
+        foreach ($block->getFaqCollection() as $key => $post) {
+            echo '<tr>
                     <td>' . $post->getName() . '</td>
                     <td>' . $post->getQuestion() . '</td>
                     <td>' . $post->getAnswer() . '</td>
                     <td>' . $post->getCreatedAt() . '</td>
-                    <td>' . $post->getStatus() . '</td>
                   </tr>';
-    }
-    ?>
-</table>
+        }
+        ?>
+    </table>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+</div>
 <div class="col-md-8">
-    <form name="addData" method="post" id="addData" class="form" action="<?php echo $this->getFormAction(); ?>"
-          data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
-          data-mage-init='{"validation":{}}'>
-        <fieldset class="fieldset">
-            <legend class="legend"><span>Book Detail</span></legend>
-            <fieldset class="fieldset row">
-                <div class="fields col-md-6">
-                    <div class="field name required">
-                        <label class="label" for="title"><span>Title</span></label>
-                        <div class="control">
-                            <input name="title" id="Title" title="Title" value="" class="input-text" type="text"
-                                   data-validate="{required:true}">
+    <div class="row">
+        <form name="addData" method="post" id="addData" class="form" action="<?php echo $this->getFormAction(); ?>"
+              data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+              data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span>Question form</span></legend>
+                <fieldset class="fieldset row">
+                    <div class="fields col-md-6">
+                        <div class="field name required">
+                            <label class="label" for="Name"><span>Name</span></label>
+                            <div class="control">
+                                <input name="name" id="Name" title="Name" value="" class="input-text" type="text"
+                                       data-validate="{required:true}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <label class="label" for="content"><span>content</span></label>
-                        <div class="control">
-                            <textarea name="content" id="content" rows="5" cols="8" class="input-text"
+                        <div class="field required">
+                            <label class="label" for="content"><span>Question</span></label>
+                            <div class="control">
+                            <textarea name="question" id="question" rows="5" cols="8" class="input-text"
                                       data-validate="{required:true}"></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </fieldset>
             </fieldset>
-        </fieldset>
-        <div class="actions-toolbar">
-            <div class="primary">
-                <button type="submit" class="action submit primary" title="Save"><span>Save</span></button>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="Save"><span>Save</span></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
